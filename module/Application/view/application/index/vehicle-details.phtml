@@ -1,0 +1,70 @@
+
+
+<head>
+    <title>Vehicle Details</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Result</h2>
+        <p>
+            <?php echo $vehicle->getId(); ?>
+        </p>
+        <div class="row">
+
+            <div class="col-sm-5">
+                <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#myCarousel" data-slide-to="1"></li>
+                        <li data-target="#myCarousel" data-slide-to="2"></li>
+                        <li data-target="#myCarousel" data-slide-to="3"></li>
+                    </ol>
+
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <?php foreach ($vehicle->getImages() as $key => $image):
+                            ?>
+                            <div class="item <?php echo $key == 0 ? 'active' : ''; ?>">
+                                <img class="img-responsive" src="<?php echo $this->basepath('img/vehicleImages/') . $image->getImagepath() . '.jpg'; ?>" >
+                            </div>
+                            <?php
+                        endforeach;
+                        ?>
+                    </div>
+
+                    <!-- Left and right controls -->
+                    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+            <div class="col-sm-7" style="background: whitesmoke;">
+                <h4>Make:  <?php echo $vehicle->getMake(); ?></h4>
+                <p>Model: <?php echo $vehicle->getModel(); ?></p>
+                <p>Year:  <?php echo $vehicle->getYear(); ?></p>
+                <p>Price: <?php echo $vehicle->getPrice(); ?></p>
+
+            </div>
+        </div>
+
+
+
+
+
+
+</body>

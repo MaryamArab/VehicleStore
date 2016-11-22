@@ -1,0 +1,39 @@
+<body>  
+  <div class="container">               
+    <div class="row">
+      <!-- Page header -->
+      <div class="col-md-4">
+        <div class="app-caption">Vehicle Ishop</div>
+      </div>                
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <!-- Navigation bar -->
+        
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active">
+                      <a href="<?= $this->url('home') ?>">Home</a>
+                    </li>
+                    
+                    
+                </ul>     
+            </div>
+        </nav>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <!-- Breadcrumbs -->        
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <!-- Page content placeholder -->
+        <?= $this->content; ?>
+      </div>
+    </div>
+   <!-- /container -->
+  <?php echo $this->inlineScript() ?>
+</body>
