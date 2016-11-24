@@ -15,8 +15,6 @@ class VehicleManager {
     {
         return $this->entityManager;
     }
-
-        
     /**
      * Constructor.
      */
@@ -32,18 +30,5 @@ class VehicleManager {
         return $vehicles;
         
     }
-     public function addReviewsToVehicle($vehicle, $data) 
-    {
-        // Create new Comment entity.
-       /* $comment = new Comment();
-        $comment->setPost($post);
-        $comment->setAuthor($data['author']);
-        $comment->setContent($data['comment']);        
-        $currentDate = date('Y-m-d H:i:s');
-        $comment->setDateCreated($currentDate);
-        // Add the entity to entity manager.
-        $this->entityManager->persist($comment);
-        // Apply changes.
-        $this->entityManager->flush();*/
-    }
+    
 }

@@ -21,7 +21,7 @@ return [
                     'route'    => '/',
                     'defaults' => [
                         'controller' => Controller\IndexController::class,
-                        'action'     => 'index',
+                        'action'     => 'vehicleSearch',
                     ],
                 ],
             ],
@@ -49,8 +49,11 @@ return [
     'service_manager'=>[
         'factories' => [
             Service\VehicleManager::class => Service\Factory\VehicleManagerFactory::class,
+            Service\ReviewManager::class => Service\Factory\ReviewManagerFactory::class,
+            Service\MailSender::class => InvokableFactory::class,
         ],
     ],
+    
     'doctrine' => [
         'driver' => [
             __NAMESPACE__ . '_driver' => [

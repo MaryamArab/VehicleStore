@@ -22,7 +22,8 @@
         "zendframework/zend-json": "^3.0",
         "zendframework/zend-mvc-console": "^1.1.10",
         "zendframework/zend-mvc-plugins": "^1.0.1",
-	"doctrine/doctrine-orm-module": "^1.0.9"
+	"doctrine/doctrine-orm-module": "^1.0.9",
+	"zendframework/zend-mail": "^2.7"
     },
     "autoload": {
         "psr-4": {
