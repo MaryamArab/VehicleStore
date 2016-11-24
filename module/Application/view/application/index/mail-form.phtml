@@ -1,0 +1,32 @@
+<?php $this->headTitle('Email to Seller'); ?>
+<body>
+   
+    <div class="container">
+        <h2>Email to Mr/Mrs <?php echo $seller->getName(); ?></h2>
+        <form class="form-horizontal emailForm" action="<?= $this->url('application', ['action' => 'mail-form', 'id' => $vid]); ?>" method="post">
+
+           
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="">Subject </label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="user-name" name="$eSubject">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="comment">Body </label>
+                <div class="col-sm-10">
+                <textarea class="form-control" rows="5" id="comment" name="$text"></textarea>
+                </div>
+            </div>
+         
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-default">Send Email</button>
+                </div>
+            </div>
+        </form>
+
+
+
+</body>

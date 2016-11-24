@@ -1,49 +1,6 @@
 
+<?= $this->headTitle('Search Vehicle'); ?>
 
-<head>
-    <title>Search Vehicle</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <style>
-        .photos, .trending-photos {
-            padding-bottom: 20px;
-            clear: both;
-        }
-        .photo-item {
-            float: left;
-            margin-bottom: 5px;
-            position: relative;
-        }
-        .searchForm{
-            border:1px solid lightgray;
-            margin-bottom: 3%;
-            padding: 1%;
-            width:50%;
-        }
-        .preview-panel-content1{
-            margin-bottom: 5%;
-        }
-        .preview-panel .preview-panel-content {
-            padding: 30px 15px;
-            
-        }
-        .preview-panel .preview-panel-content h4 {
-            margin: 0;
-            font-size: 20px;
-            line-height: 20px;
-        }
-        .preview-panel .preview-panel-content p {
-            margin: 15px 0;
-        }
-        .preview-panel .preview-panel-content .btn {
-            font-size: 11px;
-            border-color: #eeeeee;
-        }
-    </style>
-</head>
 <body>
 
     <div class="container">
@@ -52,16 +9,16 @@
         <div id="result">
             <div class="row">
                 <?php foreach ($allvehicles as $key => $vehicle): ?>
-                    <div class="col-sm-3" style="background-color:whitesmoke; margin-right:1%;">
+                    <div class="col-sm-3 car-image-s-r-container" >
                         <a href="<?php echo $this->url('application', array('action'=> 'vehicleDetails', 'id' => $vehicle->getId())); ?>">
-                            <img style="width: 100%;" src="<?php echo $this->basepath('img/vehicleImages/') . $vehicle->getImages()[0]->getImagepath() . '.jpg'; ?>">
+                            <img class="car-image-s-r"  src="<?php echo $this->basepath('img/vehicleImages/') . $vehicle->getImages()[0]->getImagepath() . '.jpg'; ?>">
                         </a>
                         <div class="preview-panel-content1">
                            
-                            <p>Model: <?php echo $vehicle->getModel(); ?> </p>
-                            <p>Year: <?php echo $vehicle->getYear(); ?> </p>
-                            <p>Price: <?php echo $vehicle->getPrice(); ?> </p>
-                            <a href="" class="btn btn-default">More Details</a>
+                            <p class="detail-title">Model: <?php echo $vehicle->getModel(); ?> </p>
+                            <p class="detail-title">Year: <?php echo $vehicle->getYear(); ?> </p>
+                            <p class="detail-title">Price: <?php echo $vehicle->getPrice(); ?> </p>
+                            <a href="<?php echo $this->url('application', array('action'=> 'vehicleDetails', 'id' => $vehicle->getId())); ?>" class="btn btn-default">More Details</a>
                         </div>
                     </div>
 

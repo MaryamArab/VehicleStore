@@ -1,54 +1,5 @@
 <?= $this->headTitle('Vehicle Detail'); ?>
-<style>
 
-    .header-title
-    {
-        color: darkred;
-        font-family: fantasy;
-        font-weight: bolder;
-        font-size: 48px;
-    }
-    .detail-panel {
-        min-height: 300px;
-        padding: 9px;
-        margin-bottom: 0;
-        background-color: #f5f5f5;
-
-        border-radius: 4px;
-        -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
-        box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
-    }
-    .body{
-        borde:1px solid red;
-        padding:2%;
-    }
-    .vehicle-details{
-        background: whitesmoke;
-        border: 1px solid lightgray;
-        border-radius: 5px;
-        height:200px;
-    }
-
-    .detail-title{
-        font-weight: bold;
-        color: graytext;
-        margin: 3px 0 0 0;
-        padding: 3px;
-        line-height: 30px;
-        margin-left: -5px;
-        font-size: 18px;
-    }
-    #reviews-container
-    {
-        padding:10px;
-    }
-    .review-div{
-        border:1px solid lightgray;
-        background: #dbdbdb;
-        border-radius: 10px;
-        padding:10px;
-    }
-</style>
 <script src="<?php echo $this->basepath('js/sliderScript.js'); ?>"></script>
 <body>
     <div class="container">
@@ -59,8 +10,8 @@
         </header>
         <div class="row detail-panel">
             <div class="row title">
-                <div class="col-md-9 col-sm-7 col-xs-12"><h3><span><?php echo $vehicle->getMake(); ?> - <?php echo $vehicle->getModel(); ?> - <?php echo $vehicle->getYear(); ?></span></h3></div>
-                <div class="col-md-3 col-sm-5 hidden-xs"><h3><span id="lblDetailPrice">$ <?php echo $vehicle->getPrice(); ?></span></h3></div>
+                <div class="col-md-10 col-sm-7 col-xs-12"><p class="price"><span><?php echo $vehicle->getMake(); ?> - <?php echo $vehicle->getModel(); ?> - <?php echo $vehicle->getYear(); ?></span></p></div>
+                <div class="col-md-2 col-sm-5 hidden-xs"><p class="price"><span id="lblDetailPrice">$ <?php echo $vehicle->getPrice(); ?></span></p></div>
             </div>
 
             <div class="row body">
@@ -106,7 +57,11 @@
                         <span class="detail-title">website:</span>
                         <span><?php echo $vehicle->getSeller()->getWebsite(); ?></span>
                         </br>
-                        <span style="margin-right: 10px;"><button class="btn btn-warning"><i class="glyphicon glyphicon-envelope"></i> Email seller</button></span>
+                        <span style="margin-right: 10px;">
+                            <a href="<?php echo $this->url('application', array('action' => 'mailForm', 'id' => $vehicle->getId())); ?>">
+                                <button class="btn btn-warning"><i class="glyphicon glyphicon-envelope"></i> Email seller</button>
+                            </a>
+                        </span>
                         <span><a href="<?php echo $this->url('application', array('action' => 'reviewForm', 'id' => $vehicle->getId())); ?>">
                                 <button class="btn btn-info"><i class="glyphicon glyphicon-send"></i> Add Review</button></a></span>
                     </div>

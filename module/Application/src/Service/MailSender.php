@@ -42,12 +42,12 @@ class MailSender {
         
         return $result;
     }
-    public function sendSMTPMail($sender, $recipient, $subject, $text) {
+   public function sendSMTPMail($sender, $recipient, $subject, $text) {
         $result = false;
         try {
 	     $message = new Message();
 	     $message->addTo($recipient)
-		->addFrom('meysamabl@yahoo.com')
+		->addFrom($sender)
 		->setSubject($subject)
 		->setBody($text);
 
@@ -59,8 +59,8 @@ class MailSender {
 	        'port' => 587,
 	        'connection_class'  => 'plain',
 	        'connection_config' => array(
-		    'username' => 'meysamabl@yahoo.com',
-		    'password' => 'aA!mey6960',
+		    'username' => 'h_seller123@yahoo.com',
+		    'password' => 'vehiclestore123',
 		    'ssl'      => 'tls',
 	        ),
 	    ));

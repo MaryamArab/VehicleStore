@@ -64,10 +64,10 @@ class User extends \Application\Model\User implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', 'reviews', 'id', 'username'];
+            return ['__isInitialized__', 'reviews', 'id', 'username', 'email'];
         }
 
-        return ['__isInitialized__', 'reviews', 'id', 'username'];
+        return ['__isInitialized__', 'reviews', 'id', 'username', 'email'];
     }
 
     /**
@@ -202,12 +202,34 @@ class User extends \Application\Model\User implements \Doctrine\ORM\Proxy\Proxy
     /**
      * {@inheritDoc}
      */
+    public function getEmail()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEmail', []);
+
+        return parent::getEmail();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function setUsername($username)
     {
 
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUsername', [$username]);
 
         return parent::setUsername($username);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setEmail($email)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEmail', [$email]);
+
+        return parent::setEmail($email);
     }
 
     /**

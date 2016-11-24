@@ -35,6 +35,12 @@ class User {
      * @ORM\Column(name="username");
      */
     protected $username;
+    
+     /**
+     * @ORM\Column(name="email");
+     */
+    protected $email;
+
 
     function __construct() {
         $this->reviews = new ArrayCollection();
@@ -47,11 +53,18 @@ class User {
     function getUsername() {
         return $this->username;
     }
-
-    function setUsername($username) {
-        $this->username = $username;
+    function getEmail() {
+        return $this->email;
     }
 
+        function setUsername($username) {
+        $this->username = $username;
+    }
+    function setEmail($email) {
+        $this->email = $email;
+    }
+
+    
     public function getReviews() {
         return $this->reviews;
     }

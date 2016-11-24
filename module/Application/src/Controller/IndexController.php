@@ -1,11 +1,5 @@
 <?php
 
-/**
- * @link      http://github.com/zendframework/ZendSkeletonApplication for the canonical source repository
- * @copyright Copyright (c) 2005-2016 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
- */
-
 namespace Application\Controller;
 
 use Application\Model\VehicleType;
@@ -52,7 +46,7 @@ class IndexController extends AbstractActionController {
 
         $keyword = $this->getRequest()->getQuery('keyword');
         $allvehicles = $this->vehiclemanager->searchVehicle($type, $minbudget, $maxbudget, $keyword);
-        //$flag = $this->mailSender->sendSMTPMail('no-reply@example.com', 'maryam.arab83@gmail.com', "SALAM", "This is test email");
+
         return new ViewModel([
             'allvehicles' => $allvehicles,
         ]);
@@ -73,17 +67,35 @@ class IndexController extends AbstractActionController {
         $id = (int) $this->params()->fromRoute('id');
         $em = $this->getEntitymanager();
         $vehicle = $em->find('Application\Model\Vehicle', $id);
-        if($this->getRequest()->isPost()) {
+        if ($this->getRequest()->isPost()) {
             $reviewTitle = $this->params()->fromPost('rTitle', 'default_val');
-            $reviewText = $this->params()->fromPost('rBody', 'default_val'); 
-            $this->reviewManager->addReview($vehicle,$reviewTitle,$reviewText);
+            $reviewText = $this->params()->fromPost('rBody', 'default_val');
+            $this->reviewManager->addReview($vehicle, $reviewTitle, $reviewText);
             return $this->redirect()->toRoute('application', ['action' => 'vehicle-details', 'id' => $id]);
         } else {
             return new ViewModel([
                 'vid' => $id
             ]);
         }
-        
+    }
+
+    public function mailFormAction() {
+        $id = (int) $this->params()->fromRoute('id');
+        $em = $this->getEntitymanager();
+        $vehicle = $em->find('Application\Model\Vehicle', $id);
+        $seller = $vehicle->getSeller();
+        if ($this->getRequest()->isPost()) {
+            $eSubject = $this->params()->fromPost('eTitle', 'default_val');
+            $sellerEmail = $seller->getEmail();
+            $eText = $this->params()->fromPost('eBody', 'default_val');
+            $this->mailSender->sendSMTPMail('no-reply@example.com', $sellerEmail, $eSubject, $eText);
+            return $this->redirect()->toRoute('application', ['action' => 'vehicle-details', 'id' => $id]);
+        } else {
+            return new ViewModel([
+                'vid' => $id,
+                'seller' => $seller,
+            ]);
+        }
     }
 
     /// services

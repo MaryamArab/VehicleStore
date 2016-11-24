@@ -126,6 +126,10 @@ class Vehicle {
     function getVehicleType() {
         return $this->vehicleType;
     }
+     function getSeller() {
+        return $this->seller;
+    }
+
 
     function setMake($make) {
         $this->make = $make;
@@ -154,10 +158,7 @@ class Vehicle {
     function setVehicleType($vehicleType) {
         $this->vehicleType = $vehicleType;
     }
-    function getSeller() {
-        return $this->seller;
-    }
-
+   
     function setSeller($seller) {
         $this->seller = $seller;
     }
