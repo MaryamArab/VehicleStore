@@ -47,7 +47,7 @@ class MailSender {
         try {
 	     $message = new Message();
 	     $message->addTo($recipient)
-		->addFrom($sender)
+		->addFrom('h_seller123@yahoo.com')
 		->setSubject($subject)
 		->setBody($text);
 

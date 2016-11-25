@@ -7,6 +7,15 @@
             <div class="row">
                 <div class="col-md-9 col-sm-7 col-xs-12 header-title">Vehicle Store</div>
             </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <?php
+                    $flash = $this->flashMessenger();
+                    echo $flash->render('error', array('alert', 'alert-dismissible', 'alert-danger'));
+                    echo $flash->render('success', array('alert', 'alert-dismissible', 'alert-success'));
+                    ?>
+                </div>
+            </div>
         </header>
         <div class="row detail-panel">
             <div class="row title">

@@ -5,6 +5,7 @@ namespace Application\Controller;
 use Application\Model\VehicleType;
 use Application\Service\MailSender;
 use Zend\Mvc\Controller\AbstractActionController;
+use Zend\Mvc\Plugin\FlashMessenger\FlashMessenger;
 use Zend\View\Model\ViewModel;
 
 class IndexController extends AbstractActionController {
@@ -71,6 +72,7 @@ class IndexController extends AbstractActionController {
             $reviewTitle = $this->params()->fromPost('rTitle', 'default_val');
             $reviewText = $this->params()->fromPost('rBody', 'default_val');
             $this->reviewManager->addReview($vehicle, $reviewTitle, $reviewText);
+            $this->flashMessenger()->addMessage('Review added successfully!', FlashMessenger::NAMESPACE_SUCCESS);
             return $this->redirect()->toRoute('application', ['action' => 'vehicle-details', 'id' => $id]);
         } else {
             return new ViewModel([
@@ -88,7 +90,13 @@ class IndexController extends AbstractActionController {
             $eSubject = $this->params()->fromPost('eTitle', 'default_val');
             $sellerEmail = $seller->getEmail();
             $eText = $this->params()->fromPost('eBody', 'default_val');
-            $this->mailSender->sendSMTPMail('no-reply@example.com', $sellerEmail, $eSubject, $eText);
+            $mailResult = $this->mailSender->
+                    sendSMTPMail('no-reply@example.com', $sellerEmail, $eSubject, $eText);
+            if($mailResult) {
+                $this->flashMessenger()->addMessage('email was sent successfully!', FlashMessenger::NAMESPACE_SUCCESS);
+            } else {
+                $this->flashMessenger()->addMessage("Fail to send email to $sellerEmail", FlashMessenger::NAMESPACE_ERROR);
+            }
             return $this->redirect()->toRoute('application', ['action' => 'vehicle-details', 'id' => $id]);
         } else {
             return new ViewModel([
