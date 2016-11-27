@@ -1,21 +1,33 @@
-# ZendSkeletonApplication
+# VehicleStore Sample Application
 
 ## Introduction
 
-This is a skeleton application using the Zend Framework MVC layer and module
-systems. This application is meant to be used as a starting place for those
-looking to get their feet wet with Zend Framework.
+VehicleStore Application is created using Zend framework3 and mysql. 
 
-## Installation using Composer
+## Required Applciations:
+1. php > 5.6
+2. mysql 
+3. apache2 
 
-The easiest way to create a new Zend Framework project is to use
-[Composer](https://getcomposer.org/).  If you don't have it already installed,
-then please install as per the [documentation](https://getcomposer.org/doc/00-intro.md).
+## Initial Setup 
 
-To create your new Zend Framework project:
+After downloading the source code, you will need following setup: 
 
 ```bash
-$ composer create-project -sdev zendframework/skeleton-application path/to/install
+$ php composer.phar self-update
+$ php composer.phar install
+```
+Create a database vehiclestore in mysql:
+
+```bash
+CREATE DATABASE vehiclestore;
+GRANT ALL PRIVILEGES ON vehiclestore.* TO vehiclesore@localhost IDENTIFIED BY 'vehiclestore'; 
+```
+
+Create tables and import sample data into vehiclesore database;
+
+```bash
+$ mysql -uvehiclestore -pvehiclestore vehiclestore < data/database/vehiclestore.sql
 ```
 
 Once installed, you can test it out immediately using PHP's built-in web server:

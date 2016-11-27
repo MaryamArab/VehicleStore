@@ -162,3 +162,9 @@ body{
     height:350px;
     padding: 1%;
 }
+
+@media (min-width: 768px){
+    .col-sm-3 {
+    width: 24%;
+}
+}
