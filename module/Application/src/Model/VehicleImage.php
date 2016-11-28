@@ -23,6 +23,12 @@ class VehicleImage {
      * @ORM\Column(name="imagepath");
      */
     protected $imagepath;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="\Application\Model\Vehicle" , inversedBy="images")
+     * @ORM\JoinColumn(name="vehicle_id", referencedColumnName="id")
+     */
+    protected $vehicle;
 
 
     function getId() {
@@ -52,10 +58,6 @@ class VehicleImage {
     function setVehicle($vehicle) {
         $this->vehicle = $vehicle;
     }
-    /**
-     * @ORM\ManyToOne(targetEntity="\Application\Model\Vehicle" , inversedBy="images")
-     * @ORM\JoinColumn(name="vehicle_id", referencedColumnName="id")
-     */
-    protected $vehicle;
+    
 
 }

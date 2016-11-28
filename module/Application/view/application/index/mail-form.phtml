@@ -2,7 +2,7 @@
 <body>
    
     <div class="container">
-        <h2>Email to Mr/Mrs <?php echo $seller->getName(); ?></h2>
+        <h2>Email to <?php echo $seller->getName(); ?></h2>
         <form class="form-horizontal emailForm" action="<?= $this->url('application', ['action' => 'mail-form', 'id' => $vid]); ?>" method="post">
 
            
